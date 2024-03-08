@@ -1,11 +1,16 @@
+import { authModalState } from '@/atoms/authModalAtom';
 import React from 'react';
+import { useSetRecoilState } from 'recoil';
 
 type LoginProps = {
     
 };
 
 const Login:React.FC<LoginProps> = () => {
-    
+    const setAuthModal =useSetRecoilState(authModalState);
+    const clickHandler = (type:'login' | 'register' | 'forgetPassword')=>{
+        setAuthModal((prev)=>({...prev,type}))
+    }
     return <form className='space-y-6 px-6 py-4'>
         <h3 className='text-xl font-medium text-white'>Sign in to Elitecode</h3>
         <div>
@@ -19,11 +24,12 @@ const Login:React.FC<LoginProps> = () => {
         <button type='submit' className='w-full text-white focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-brand-orange hover:bg-brand-orange-s'>
             Login
         </button>
-        <button className='flex w-full justify-end'>
+        <button className='flex w-full justify-end'
+        onClick={()=>clickHandler('forgetPassword')}>
             <a href="#" className='text-sm text-brand-orange hover:underline w-full text-right'>Forgot Password?</a>
         </button>
         <div>
-            <p className='text-sm font-medium text-gray-500'>Don't have an account? <a href="#" className='text-blue-700 hover:underline'>Sign Up</a></p>
+            <p className='text-sm font-medium text-gray-500'>Don't have an account? <a href="#" onClick={()=>clickHandler('register')} className='text-blue-700 hover:underline'>Sign Up</a></p>
         </div>
     </form>
 }

@@ -1,3 +1,4 @@
+import AuthModal from '@/components/Modals/AuthModal';
 import Navbar from '@/components/Navbar';
 import React from 'react';
 
@@ -19,6 +20,7 @@ const index:React.FC<indexProps> = () => {
         <div className='flex items-center justify-center h-[calc(100vh-5rem)] pointer-events-none select-none '>
             <img src='/hero.png' alt='hero image'/>
         </div>
+        <AuthModal></AuthModal>
     </div>
 }
 export default index;

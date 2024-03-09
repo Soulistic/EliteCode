@@ -5,6 +5,9 @@ import ResetPassword from './ResetPassword';
 import Signup from './Signup';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { authModalState } from '@/atoms/authModalAtom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase/firebase';
+import { useRouter } from 'next/router';
 
 type AuthModalProps = {
     

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Logout from '../Buttons/Logout';
+import { useSetRecoilState } from 'recoil';
+import { authModalState } from '@/atoms/authModalAtom';
 
 type TopbarProps = {
     
@@ -11,6 +13,7 @@ type TopbarProps = {
 
 const Topbar:React.FC<TopbarProps> = () => {
     const [user]=useAuthState(auth)
+    const setAuthModalState=useSetRecoilState(authModalState);
     return(
         <nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-layer-1 text-dark-gray-7'>
             <div className={`flex w-full items-center justify-between ml-12 mr-12 "max-w-[1200px] mx-auto" : ""}`}>
@@ -22,7 +25,9 @@ const Topbar:React.FC<TopbarProps> = () => {
                 <div className='flex items-center space-x-4 flex-1 justify-end'>
                     <a href="https://www.linkedin.com/in/faiz-alam-3933ba220/" className='bg-brand-orange text-white px-2 py-1 sm:px-4 rounded-md text-sm font-medium hover:text-brand-orange hover:bg-white hover:border-brand-orange-s border-2 border-transparent transition duration-300 ease-in-out'>Premium</a>
                     {!user && (
-                    <Link href="/auth">
+                    <Link href="/auth" onClick={()=>{
+                        setAuthModalState((prev)=>({...prev,isOpen:true,type:"login"}));
+                    }}>
                         <button className='bg-brand-orange text-white px-2 py-1 sm:px-4 rounded-md text-sm font-medium hover:text-brand-orange hover:bg-white hover:border-brand-orange-s border-2 border-transparent transition duration-300 ease-in-out'>
                             Sign In
                         </button>

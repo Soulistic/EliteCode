@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
-import Split from 'react-split';
+import React from 'react';
+import Split from 'react-split'
 import ProblemDescription from './ProblemDescription/ProblemDescription';
-
-const Workspace: React.FC = () => {
-    const [showEditorial, setShowEditorial] = useState(false);
-    const [showDescription,setShowDescription] = useState(true);
-    const handleClick = () => {
-
-    };
-
-    return (
-        <Split className='split'>
-            <ProblemDescription></ProblemDescription>
-            <div>code section</div>
-        </Split>
-    );
+import Playground from './Playground/Playground';
+type WorkspaceProps = {
+    
 };
 
+const Workspace:React.FC<WorkspaceProps> = () => {
+    
+    return(
+        <Split className="split" minSize={0}>
+            <ProblemDescription></ProblemDescription>
+            <Playground></Playground>
+        </Split>
+    );
+}
 export default Workspace;

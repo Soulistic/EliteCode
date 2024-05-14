@@ -8,20 +8,14 @@ type ProblemDescriptionProps = {
 };
 
 const ProblemDescription: React.FC<ProblemDescriptionProps> = () => {
-    const [backgroundColor, setBackgroundColor] = useState<'bg-dark-layer-1' | 'bg-dark-layer-2'>('bg-dark-layer-1');
-    const handlePage =()=>{
-        setBackgroundColor(prevBackgroundColor =>
-            prevBackgroundColor === 'bg-dark-layer-1' ? 'bg-dark-layer-2' : 'bg-dark-layer-1'
-          );
-    };
 	return (
 		<div className='bg-dark-layer-1'>
 			{/* TAB */}
 			<div className='flex h-11 w-full items-center pt-2 bg-dark-layer-2 text-white overflow-x-hidden'>
-                <div className={`rounded-t-[5px] px-5 py-[10px] text-xs cursor-pointer ${backgroundColor === 'bg-dark-layer-1' ? 'bg-dark-layer-1' : ''}`} onClick={handlePage}>
+                <div className={`rounded-t-[5px] px-5 py-[10px] text-xs cursor-pointer bg-dark-layer-1`}>
 					Description
 				</div>
-				<div className={`rounded-t-[5px] px-5 py-[10px] text-xs cursor-pointer ml-1 ${backgroundColor === 'bg-dark-layer-2' ? 'bg-dark-layer-1' : ''}`} onClick={handlePage}>
+				<div className={`rounded-t-[5px] px-5 py-[10px] text-xs cursor-pointer ml-1`} >
 					Editorial
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 import assert from "assert";
 import { Problem } from "../types/problem";
-import example1 from "src/utils/images/search2di.jpg";
-import example2 from "src/utils/images/search2dii.jpg";
+import example1 from "./images/search2di.jpg";
+import example2 from "./images/search2dii.jpg";
 
 export const search2DMatrixHandler = (fn: any) => {
 	try {

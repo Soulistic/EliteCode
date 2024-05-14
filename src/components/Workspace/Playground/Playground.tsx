@@ -5,7 +5,10 @@ import CodeMirror from '@uiw/react-codemirror';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 import { cpp } from '@codemirror/lang-cpp';
 import EditorFooter from './EditorFooter';
-const code=`cook your code`
+import { javascript } from '@codemirror/lang-javascript';
+const code=`function twoSum(nums,target){
+    // Write your code here
+};`;
 type PlaygroundProps = {
     
 };
@@ -13,14 +16,14 @@ type PlaygroundProps = {
 const Playground:React.FC<PlaygroundProps> = () => {
     
     return (
-        <div className='flex flex-col bg-dark-layer-1 relative'>
+        <div className='flex flex-col bg-dark-layer-1 relative overflow-x-hidden'>
             <PreferenceNav></PreferenceNav>
             <Split className='h-[calc(100vh-94px)]'  direction='vertical' sizes={[60,40]} minSize={60}>
                 <div className="w-full overflow-auto">
                     <CodeMirror
                         value={code}
                         theme={vscodeDark}
-                        extensions={[cpp()]}
+                        extensions={[javascript()]}
                         style={{fontSize:16}}
                     />
                 </div>

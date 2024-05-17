@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PreferenceNav from './PreferenceNav/PreferenceNav';
 import Split from 'react-split';
@@ -40,7 +39,7 @@ const Playground:React.FC<PlaygroundProps> = ({problem}) => {
                                 onClick={()=>setActiveTestCaseId(index)}
                             >
                                 <div className='flex flex-wrap items-center gap-y-4'>
-                                    <div className='font-medium items-center whitespace-nowrap focus:outline-none inline-flex bg-fill-3 dark:bg-dark-fill-3 hover:bg-fill-2 dark:hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 hover:text-label-1 dark:hover:text-dark-label-1 text-label-1 dark:text-dark-label-1 text-white'>case {index+1}</div>
+                                    <div className={`font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap ${activeTestCaseId===index?"text-white":"text-gray-500"}`}>case {index+1}</div>
                                 </div>
                             </div>
                         ))}

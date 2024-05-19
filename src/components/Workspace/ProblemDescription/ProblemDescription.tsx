@@ -5,6 +5,8 @@ import { BsCheck2Circle } from "react-icons/bs";
 import { TiStarOutline } from "react-icons/ti";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "@/firebase/firebase";
+import RectangleSkeleton from "@/components/Skeletons/RectangleSkeleton";
+import CircleSkeleton from "@/components/Skeletons/CircleSkeleton";
 
 type ProblemDescriptionProps = {
     problem: Problem;
@@ -51,6 +53,15 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({problem}) => {
 								<div className='cursor-pointer hover:bg-dark-fill-3  rounded p-[3px]  ml-4 text-xl transition-colors duration-200 text-green-s text-dark-gray-6 '>
 									<TiStarOutline />
 								</div>
+							</div>
+						)}
+						{loading &&(
+							<div className="mt-3 flex space-x-2">
+								<RectangleSkeleton></RectangleSkeleton>
+								<CircleSkeleton></CircleSkeleton>
+								<RectangleSkeleton></RectangleSkeleton>
+								<RectangleSkeleton></RectangleSkeleton>
+								<CircleSkeleton></CircleSkeleton>
 							</div>
 						)}
 

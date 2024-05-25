@@ -8,14 +8,22 @@ import { auth, firestore } from "@/firebase/firebase";
 import RectangleSkeleton from "@/components/Skeletons/RectangleSkeleton";
 import CircleSkeleton from "@/components/Skeletons/CircleSkeleton";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 
 type ProblemDescriptionProps = {
     problem: Problem;
 };
 
 const ProblemDescription: React.FC<ProblemDescriptionProps> = ({problem}) => {
+	const [user]=useAuthState(auth);
 	const { currentProblem, loading, problemDifficultyClass, setCurrentProblem } = useGetCurrentProblem(problem.id);
 	const {liked,disliked,solved,setData,starred}=useGetUserDataonProblem(problem.id);
+	const handleLike=async()=>{
+		if(!user){
+			toast.error("You need to login to like the problem",{position: "top-left",theme:"dark"});
+			return;
+		}
+	}
 	return (
 		<div className='bg-dark-layer-1'>
 			{/* TAB */}
@@ -44,7 +52,9 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({problem}) => {
 								<div className='rounded p-[3px] ml-4 text-lg transition-colors duration-200 text-green-s text-dark-green-s'>
 									<BsCheck2Circle />
 								</div>
-								<div className='flex items-center cursor-pointer hover:bg-dark-fill-3 space-x-1 rounded p-[3px]  ml-4 text-lg transition-colors duration-200 text-dark-gray-6'>
+								<div className='flex items-center cursor-pointer hover:bg-dark-fill-3 space-x-1 rounded p-[3px]  ml-4 text-lg transition-colors duration-200 text-dark-gray-6'
+									onClick={handleLike}	
+								>
 									{liked && <AiFillLike className="text-dark-blue-s" /> }
 									{!liked && <AiFillLike />}
 									
@@ -145,16 +155,16 @@ function useGetUserDataonProblem(problemId:string){
 			const userSnap=await getDoc(userRef);
 			if(userSnap.exists()){
 				const data=userSnap.data();
-				const {solveProblems,likedProblems,dislikedProblems,starredProblems}=data;// destructuring data
+				const {solvedProblems,likedProblems,dislikedProblems,starredProblems}=data;// destructuring data
+
 				setData({
 					liked:likedProblems.includes(problemId),
 					disliked:dislikedProblems.includes(problemId),
 					starred:starredProblems.includes(problemId),
-					solved:solveProblems.includes(problemId)
+					solved:solvedProblems.includes(problemId),
 				});
 			}
 		};
-
 
 
 		if(user) getUserDataonProblem();

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { IoClose } from "react-icons/io5";
 import Login from './Login';
 import ResetPassword from './ResetPassword';
@@ -33,9 +33,6 @@ const AuthModal:React.FC<AuthModalProps> = () => {
 							</button>
 						</div>
 						{authModal.type === "login" ? <Login></Login> : authModal.type === "register" ? <Signup></Signup> : <ResetPassword></ResetPassword> }
-                        {/* <Login></Login> */}
-						{/* <ResetPassword></ResetPassword> */}
-						{/* <Signup></Signup> */}
 					</div>
 				</div>
 			</div>
@@ -45,9 +42,9 @@ const AuthModal:React.FC<AuthModalProps> = () => {
 export default AuthModal;
 function useCloseModal() { 
 	const setAuthModal=useSetRecoilState(authModalState);
-	const closeModal =()=>{
-		setAuthModal((prev)=>({...prev,isOpen:false, type:'login'}));
-	}
+	const closeModal = useCallback(() => {
+        setAuthModal((prev) => ({ ...prev, isOpen: false, type: 'login' }));
+    }, [setAuthModal]);
 	useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {

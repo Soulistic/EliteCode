@@ -4,9 +4,11 @@ import ProblemTable from "@/components/ProblemTable/ProblemTable";
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "@/firebase/firebase";
+import useHasMounted from "@/hooks/useHasMounted";
 
 
 export default function Home() {
+	const hasMounted=useHasMounted();
 	// const [inputs,setInputs]=useState({
 	// 	id:"",
 	// 	title:"",
@@ -32,6 +34,7 @@ export default function Home() {
 	// }
 	// console.log(inputs);
 	const [LoadingProblems,setLoadingProblems]=useState(true);
+	if(!hasMounted) return null;
   return (
     <>
       <main className="bg-dark-layer-2 min-h-screen">

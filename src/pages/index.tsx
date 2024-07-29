@@ -8,32 +8,32 @@ import useHasMounted from "@/hooks/useHasMounted";
 
 
 export default function Home() {
-	const hasMounted=useHasMounted();
 	// const [inputs,setInputs]=useState({
-	// 	id:"",
-	// 	title:"",
-	// 	difficulty:"",
-	// 	category:"",
-	// 	videoId:"",
-	// 	link:"",
-	// 	order:0,
-	// 	likes:0,
-	// 	dislikes:0
-	// })
+		// 	id:"",
+		// 	title:"",
+		// 	difficulty:"",
+		// 	category:"",
+		// 	videoId:"",
+		// 	link:"",
+		// 	order:0,
+		// 	likes:0,
+		// 	dislikes:0
+		// })
 	// const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-	// 	setInputs({
-	// 		...inputs,
-	// 		[event.target.name]:event.target.value
-	// 	})
-	// }
-	// const handleSubmit=async (event:React.FormEvent<HTMLFormElement>)=>{
-	// 	event.preventDefault();
-	// 	inputs.order = Number(inputs.order);
-	// 	await setDoc(doc(firestore, "problems", inputs.id), inputs);
-	// 	alert("SAVED");
-	// }
-	// console.log(inputs);
+		// 	setInputs({
+			// 		...inputs,
+			// 		[event.target.name]:event.target.value
+			// 	})
+			// }
+			// const handleSubmit=async (event:React.FormEvent<HTMLFormElement>)=>{
+				// 	event.preventDefault();
+				// 	inputs.order = Number(inputs.order);
+				// 	await setDoc(doc(firestore, "problems", inputs.id), inputs);
+				// 	alert("SAVED");
+				// }
+				// console.log(inputs);
 	const [LoadingProblems,setLoadingProblems]=useState(true);
+	const hasMounted=useHasMounted();
 	if(!hasMounted) return null;
   return (
     <>

@@ -1,9 +1,10 @@
 // import { problems } from '@/Problemset/problems';
-import { firestore } from '@/firebase/firebase';
+import { auth, firestore } from '@/firebase/firebase';
 import { DBProblem } from '@/utils/types/problem';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/firestore';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiFillYoutube } from 'react-icons/ai';
 import { BsCheckCircle } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
@@ -32,6 +33,7 @@ const problemtable:React.FC<problemtableProps> = ({setLoadingProblems}) => {
         }
         },[]) //only once
     const problems=useGetProblems(setLoadingProblems);
+    const solvedProblems=useGetSolvedProblems();
     return(
         <>
 
@@ -41,7 +43,7 @@ const problemtable:React.FC<problemtableProps> = ({setLoadingProblems}) => {
                 return(
                     <tr className={`${idx%2==1?'bg-dark-layer-1':''}`} key={problem.id}>
                         <th className='px-2 py-4 font-medium whitespace-nowrap text-dark-green-s'>
-                            <BsCheckCircle fontSize={"18"} width={"18"}></BsCheckCircle>
+                            {solvedProblems.includes(problem.id) && <BsCheckCircle className='text-dark-green-s'></BsCheckCircle>}
                         </th>
                         <td className='px-6 py-4'>
                         {problem.link ? (
@@ -125,4 +127,24 @@ function useGetProblems(setLoadingProblems: React.Dispatch<React.SetStateAction<
 		getProblems();
 	}, [setLoadingProblems]);
 	return problems;
+}
+function useGetSolvedProblems() {
+	const [solvedProblems, setSolvedProblems] = useState<string[]>([]);
+	const [user] = useAuthState(auth);
+
+	useEffect(() => {
+		const getSolvedProblems = async () => {
+			const userRef = doc(firestore, "users", user!.uid);
+			const userDoc = await getDoc(userRef);
+
+			if (userDoc.exists()) {
+				setSolvedProblems(userDoc.data().solvedProblems);
+			}
+		};
+
+		if (user) getSolvedProblems();
+		if (!user) setSolvedProblems([]);
+	}, [user]);
+
+	return solvedProblems;
 }

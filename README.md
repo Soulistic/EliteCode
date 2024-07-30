@@ -1,47 +1,112 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EliteCode: https://elite-code-tau.vercel.app/
+
+EliteCode is a web platform designed to provide a seamless coding experience similar to LeetCode. Developed using Next.js, Tailwind CSS, TypeScript, and Firebase, it offers functionalities such as user authentication, data storage, and an integrated compiler.
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Login and Signup**: Secure user authentication using Firebase.
+- **User Data Storage**: Utilize Firebase database for storing user information and progress.
+- **Integrated Compiler**: Code directly on the platform with real-time feedback.
+- **User Interface**: Designed to closely resemble LeetCode for a familiar user experience.
+
+## Tech Stack
+
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Backend**: Firebase
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Make sure you have the following installed:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Node.js
+- npm or yarn
+- Firebase account
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Installation
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clone the repository
+    ```sh
+    git clone https://github.com/Soulistic/elitecode.git
+    ```
+2. Navigate to the project directory
+    ```sh
+    cd elitecode
+    ```
+3. Install dependencies
+    ```sh
+    npm install
+    ```
+    or
+    ```sh
+    yarn install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Setup Firebase
 
-## Learn More
+1. Create a Firebase project on the [Firebase Console](https://console.firebase.google.com/).
+2. Add your Firebase configuration to the project.
+3. Create a `.env.local` file and add your Firebase credentials:
+    ```env
+    NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+    NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+    NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Start the development server
+    ```sh
+    npm run dev
+    ```
+    or
+    ```sh
+    yarn dev
+    ```
+2. Open your browser and navigate to `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# EliteCode
+## License
 
-![Problem Page](image.png)
-![Landing Page](image-1.png)
-![Sign In Page](image-2.png)
-![Sign Up Page](image-3.png)
-![Problem Description](image-4.png)
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Your Name - [@your_twitter](https://twitter.com/your_twitter) - your_email@example.com
+
+Project Link: [https://github.com/Soulistic/elitecode](https://github.com/Soulistic/elitecode)
+![Homepage](/Image/image.png)
+![SignIn](/Image/Signin.png)
+![Forgot Password](/Image/ForgotPassword.png)
+![SignUp](/Image/SignUp.png)
+![LoggedInHomepage](/Image/LoggedInHomePage.png)
+![ProblemPlayground](/Image/ProblemPlayground.png)
+![playgroundAction](/Image/Playgroundaction.png)
+![video solution](/Image/VideoSolution.png)

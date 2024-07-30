@@ -99,7 +99,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - your_email@example.com
+[@Md Faiz Alam](https://www.linkedin.com/in/faiz-alam-3933ba220/) - smfaizalam786@gmail.com
 
 Project Link: [https://github.com/Soulistic/elitecode](https://github.com/Soulistic/elitecode)
 ![Homepage](/Image/image.png)

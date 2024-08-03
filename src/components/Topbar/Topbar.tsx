@@ -51,22 +51,22 @@ const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
             </Link>
 
 				{problemPage && (
-					<div className='flex items-center gap-4 flex-1 justify-center'>
+					<div className='flex items-center gap-4 justify-center flex-grow'>
 						<div
 							className='flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer'
 							onClick={() => handleProblemChange(false)}
 						>
 							<FaChevronLeft />
 						</div>
-						<Link
-							href='/'
-							className='flex items-center gap-2 font-medium max-w-[170px] text-dark-gray-8 cursor-pointer'
-						>
-							<div>
-								<BsList />
-							</div>
-							<p>Problem List</p>
-						</Link>
+							<Link
+								href='/'
+								className='flex items-center gap-2 font-medium max-w-[170px] text-dark-gray-8 cursor-pointer'
+							>
+								<div>
+									<BsList />
+								</div>
+								<p>Problem List</p>
+							</Link>
 						<div
 							className='flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer'
 							onClick={() => handleProblemChange(true)}
@@ -76,7 +76,7 @@ const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
 					</div>
 				)}
 
-				<div className='flex items-center space-x-4 flex-1 justify-end'>
+				<div className='flex items-center space-x-4 flex-shrink-0'>
 					<div>
 						<a
 							href='https://www.buymeacoffee.com/burakorkmezz'
